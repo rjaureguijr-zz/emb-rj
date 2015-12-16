@@ -1,7 +1,7 @@
 {
   "name": "emb-rj",
   "version": "0.0.0",
-  "description": "Small description for emb-rj goes here",
+  "description": "Local sandbox test site",
   "private": true,
   "directories": {
     "doc": "doc",
