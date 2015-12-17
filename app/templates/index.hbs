@@ -7,60 +7,9 @@
 		<section class="col" role="main">
 			<div id="search-results">
 				<div class="cf nobullet flex-theme-light flex-listing flex-collapse">
-						{{#each model as |userHistory|}}
-									<div class="flex-card flex-tile offer-card" pricechange="false">
-										<div class="flex-content">
-											<div class="flex-area-primary">
-												<div class="flex-card flex-tile offer-card-inner ">
-													<div class="flex-figure">
-														<figure class="aspect-ratio16-9 image resize-shrink"
-														        data-media-type="image" data-lazy="false"
-														        data-late="false" data-downgrade="false"
-														        data-alt="missing image alt" data-aspect-ratio="16-9"
-														        data-class="tile-media">
-															<img onerror="this.onerror=null;this.src='/static/default/default/images/car/no_photo.png';"
-															     src="{{userHistory.ThumbnailUrl}}"
-															     alt="Economy 2/4Door Car" data-car-class="EC">
-														</figure>
-													</div>
-													<div class="flex-content">
-														<div class="car-model">
-															{{userHistory.CarMakeModel}}
-														</div>
-														<p>Class: {{userHistory.CarClass}}</p>
-													</div>
-												</div>
-											</div>
-											<div class="flex-area-secondary">
-												{{#if userHistory.PickupInfo}}
-												<p><strong>Pickup Location:</strong>
-													{{userHistory.PickupInfo.Location.City}},
-													{{userHistory.PickupInfo.Location.Province}}
-													{{userHistory.PickupInfo.Location.Country}}
-												</p>
-												<p><strong>Pickup Date:</strong>
-													{{userHistory.PickupInfo.DateTime}}
-												</p>
-
-												<p><strong>Dropoff Location:</strong>
-													{{userHistory.DropOffInfo.Location.City}},
-													{{userHistory.DropOffInfo.Location.Province}}
-													{{userHistory.DropOffInfo.Location.Country}}
-												</p>
-												<p><strong>Dropoff Date:</strong>
-													{{userHistory.DropOffInfo.DateTime}}
-												</p>
-												<a href="http://expedia.com/{{userHistory.carSearch.deepLink}}" target="_blank">Search Link</a>
-												<div class="price-summary">
-													<div class="full-price">
-														{{userHistory.carSearch.price}}
-													</div>
-												</div>
-												{{/if}}
-											</div>
-										</div>
-									</div>
-						{{/each}}
+					{{#each model as |carDetails|}}
+						{{car-details carDetails=carDetails}}
+					{{/each}}
 					</div>
 			</div>
 		</section>

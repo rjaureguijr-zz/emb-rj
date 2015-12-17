@@ -1,0 +1,57 @@
+{{yield}}
+{{#if isDetailsLoaded }}
+	<div class="flex-card flex-tile offer-card" pricechange="false">
+		<div class="flex-content">
+			<div class="flex-area-primary">
+				<div class="flex-card flex-tile offer-card-inner ">
+					<div class="flex-figure">
+						<figure class="aspect-ratio16-9 image resize-shrink"
+								data-media-type="image" data-lazy="false"
+								data-late="false" data-downgrade="false"
+								data-alt="missing image alt" data-aspect-ratio="16-9"
+								data-class="tile-media">
+							<img onerror="this.onerror=null;this.src='/static/default/default/images/car/no_photo.png';"
+								 src="{{carDetails.ThumbnailUrl}}"
+								 alt="Economy 2/4Door Car" data-car-class="EC">
+						</figure>
+					</div>
+					<div class="flex-content">
+						<div class="car-model">
+							{{carDetails.CarMakeModel}}
+						</div>
+						<p>Class: {{carDetails.CarClass}}</p>
+					</div>
+				</div>
+			</div>
+			<div class="flex-area-secondary">
+				{{#if carDetails.PickupInfo}}
+					<p><strong>Pickup Location:</strong>
+						{{carDetails.PickupInfo.Location.City}},
+						{{carDetails.PickupInfo.Location.Province}}
+						{{carDetails.PickupInfo.Location.Country}}
+					</p>
+					<p><strong>Pickup Date:</strong>
+						{{carDetails.PickupInfo.DateTime}}
+					</p>
+					<p><strong>Dropoff Location:</strong>
+						{{carDetails.DropOffInfo.Location.City}},
+						{{carDetails.DropOffInfo.Location.Province}}
+						{{carDetails.DropOffInfo.Location.Country}}
+					</p>
+					<p><strong>Dropoff Date:</strong>
+						{{carDetails.DropOffInfo.DateTime}}
+					</p>
+					<a href="{{carDetails.DetailsUrl}}" target="_blank">Search Link</a>
+					<button {{action "detailsHide"}}>Hide Results</button>
+					<div class="price-summary">
+						<div class="full-price">
+							{{carDetails.Price.TotalRate.Value}} <small>{{carDetails.Price.TotalRate.Currency}}</small>
+						</div>
+					</div>
+				{{/if}}
+			</div>
+		</div>
+	</div>
+{{else}}
+	<button {{action "detailsShow"}}>Show Results</button>
+{{/if}}

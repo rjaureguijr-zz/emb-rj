@@ -1,6 +1,6 @@
 import Ember from 'ember';
 
-/*var userHistory = [
+var carDetails = [
 		{
 			"CarMakeModel": "Ford Mustang Convertible",
 			"CarClass": "Standard Convertible",
@@ -150,15 +150,14 @@ import Ember from 'ember';
 			"CarClass": "Midsize 2/4Door Car",
 			"TransmissionDriveCode": "1",
 			"FuelACCode": "1", "SupplierID": "17", "SupplierName": "EZ Rent-A-Car", "PickupInfo": {"DateTime": "2015-12-22T10:00:00", "Location": {"Code": "SFO", "ShuttleCategory": "ShuttleToCounter"}}, "DropOffInfo": {"DateTime": "2015-12-29T16:30:00", "Location": {"Code": "SFO"}}, "Capacity": {"AdultCount": "5", "ChildCount": "0", "SmallLuggageCount": "3", "LargeLuggageCount": "0"}, "DetailsUrl": "http://www.expedia.com/carsearch?piid=AQAQAQERg1IAAoADD4sl843oRgQAFIAVCaIpAB1i6YAbLqA6ABiwKoAYsCsAED&totalprice=495.49&currency=USD&styp=1&locn=SFO&dtyp=1&loc2=SFO&date1=12%2F22%2F2015&date2=12%2F29%2F2015&time1=1000&time2=1630", "RatePeriodCode": "Weekly", "Price": {"BaseRate": {"Value": "323.56", "Currency": "USD"}, "TotalRate": {"Value": "495.49", "Currency": "USD"}}, "PrePay": "false", "Mileage": {"FreeDistance": {"UnitCount": "-1"}}, "ThumbnailUrl": "https://images.trvl-media.com/cars/17/hyundai-elantra_EZ_USA_20140221_t.jpg"}
-];*/
+];
 
-export default
-Ember.Route.extend({
+export default Ember.Route.extend({
 	model(){
-	//return userHistory;
-	return Ember.$.getJSON('http://terminal2.expedia.com/x/cars/search?pickupdate=2015-12-22T10%3A00&dropoffdate=2015-12-29T16%3A30&pickuplocation=SFO&dropofflocation=SFO&sort=price&limit=10&apikey=P6xP6GRASTqwsQdYKXmpBBnwuSGUTwJH')
-		.then(function(data){
-			console.log(data);
-		});
-	}
+		return carDetails;
+		/*return Ember.$.getJSON('http://terminal2.expedia.com/x/cars/search?pickupdate=2015-12-22T10%3A00&dropoffdate=2015-12-29T16%3A30&pickuplocation=SFO&dropofflocation=SFO&sort=price&limit=10&apikey=P6xP6GRASTqwsQdYKXmpBBnwuSGUTwJH')
+			.then(function(data){
+				console.log(data);
+			});*/
+		},
 });
