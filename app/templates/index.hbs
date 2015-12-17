@@ -1,53 +1,67 @@
 {{!-- outlet --}}
-<style>
-	.col{
-		width: 70%;
-	}
-</style>
+
+{{test-comp}}
 <div id="main-results" class="site-content-wrap">
 	<div class="site-content cols-row cf">
 		<h1 class="section-header-main">Car Search Lab</h1>
-
 		<section class="col" role="main">
-			<div id="search-results" class="ember-view">
-				<div>
-					<div class="cf nobullet flex-theme-light flex-listing flex-collapse">
+			<div id="search-results">
+				<div class="cf nobullet flex-theme-light flex-listing flex-collapse">
 						{{#each model as |userHistory|}}
-							<div class="ember-view">
-								<div>
 									<div class="flex-card flex-tile offer-card" pricechange="false">
 										<div class="flex-content">
 											<div class="flex-area-primary">
 												<div class="flex-card flex-tile offer-card-inner ">
 													<div class="flex-figure">
-														<figure class="aspect-ratio16-9 image resize-shrink" data-media-type="image" data-lazy="false" data-late="false" data-downgrade="false" data-alt="missing image alt" data-aspect-ratio="16-9" data-class="tile-media">
-															<img onerror="this.onerror=null;this.src='/static/default/default/images/car/no_photo.png';" src="//images.trvl-media.com/cars/43/ZRUSECAR_ZR_USA_20130621_s.jpg" alt="Economy 2/4Door Car" data-car-class="EC">
+														<figure class="aspect-ratio16-9 image resize-shrink"
+														        data-media-type="image" data-lazy="false"
+														        data-late="false" data-downgrade="false"
+														        data-alt="missing image alt" data-aspect-ratio="16-9"
+														        data-class="tile-media">
+															<img onerror="this.onerror=null;this.src='/static/default/default/images/car/no_photo.png';"
+															     src="{{userHistory.ThumbnailUrl}}"
+															     alt="Economy 2/4Door Car" data-car-class="EC">
 														</figure>
 													</div>
-												<h5>{{userHistory.product}}</h5>
-												<p>Type: {{userHistory.type}}</p>
+													<div class="flex-content">
+														<div class="car-model">
+															{{userHistory.CarMakeModel}}
+														</div>
+														<p>Class: {{userHistory.CarClass}}</p>
+													</div>
 												</div>
 											</div>
 											<div class="flex-area-secondary">
-												{{#if userHistory.carSearch}}
-												<p><strong>Pickup Location:</strong> {{userHistory.carSearch.pickupLocation}}</p>
-												<p><strong>Pickup Date:</strong> {{userHistory.carSearch.pickupDate}}</p>
+												{{#if userHistory.PickupInfo}}
+												<p><strong>Pickup Location:</strong>
+													{{userHistory.PickupInfo.Location.City}},
+													{{userHistory.PickupInfo.Location.Province}}
+													{{userHistory.PickupInfo.Location.Country}}
+												</p>
+												<p><strong>Pickup Date:</strong>
+													{{userHistory.PickupInfo.DateTime}}
+												</p>
 
-												<p><strong>Dropoff Location:</strong> {{userHistory.carSearch.dropOffLocation}}</p>
-												<p><strong>Dropoff Date:</strong> {{userHistory.carSearch.dropOffDate}}</p>
+												<p><strong>Dropoff Location:</strong>
+													{{userHistory.DropOffInfo.Location.City}},
+													{{userHistory.DropOffInfo.Location.Province}}
+													{{userHistory.DropOffInfo.Location.Country}}
+												</p>
+												<p><strong>Dropoff Date:</strong>
+													{{userHistory.DropOffInfo.DateTime}}
+												</p>
 												<a href="http://expedia.com/{{userHistory.carSearch.deepLink}}" target="_blank">Search Link</a>
 												<div class="price-summary">
-													<div class="full-price">{{userHistory.carSearch.price}}</div>
+													<div class="full-price">
+														{{userHistory.carSearch.price}}
+													</div>
 												</div>
 												{{/if}}
 											</div>
 										</div>
 									</div>
-								</div>
-							</div>
 						{{/each}}
 					</div>
-				</div>
 			</div>
 		</section>
 	</div>
@@ -55,16 +69,3 @@
 
 {{#link-to "about"}}About{{/link-to}}
 {{#link-to "contact"}}Contact{{/link-to}}
-<ul>
-	{{#each model as |pr|}}
-		<li>
-			<div class="issue-number">#{{pr.number}}</div>
-			<div class="issue-title">
-				<a href={{pr.html_url}}>{{pr.title}}</a>
-			</div>
-			<div class="author-name">
-				Opened by <a href={{pr.head.user.html_url}}><strong>@{{pr.head.user.login}}</strong></a>
-			</div>
-		</li>
-	{{/each}}
-</ul>
