@@ -1,0 +1,22 @@
+{{outlet}}
+
+{{test-comp}}
+<div id="main-results" class="site-content-wrap">
+	<div class="site-content cols-row cf">
+		<header class="cols-row-header cf search-header no-group">
+			<h1 class="section-header-main">Car Search Lab</h1>
+		</header>
+		<section class="col" role="main">
+			<div id="search-results">
+				<div class="cf nobullet flex-theme-light flex-listing flex-collapse">
+					{{#each model as |carDetails|}}
+						{{car-details carDetails=carDetails}}
+					{{/each}}
+					</div>
+			</div>
+		</section>
+	</div>
+</div>
+
+{{#link-to "about"}}About{{/link-to}}
+{{#link-to "contact"}}Contact{{/link-to}}

@@ -1,0 +1,78 @@
+{{yield}}
+{{#if isDetailsLoaded }}
+	<div class="flex-card flex-tile offer-card" pricechange="false">
+		<div class="flex-content">
+			<div class="flex-area-primary">
+				<div class="flex-card flex-tile offer-card-inner ">
+					<div class="flex-figure">
+						<figure class="aspect-ratio16-9 image resize-shrink"
+								data-media-type="image" data-lazy="false"
+								data-late="false" data-downgrade="false"
+								data-alt="missing image alt" data-aspect-ratio="16-9"
+								data-class="tile-media">
+							<img onerror="this.onerror=null;this.src='/static/default/default/images/car/no_photo.png';"
+								 src="{{carDetails.ThumbnailUrl}}"
+								 alt="Economy 2/4Door Car" data-car-class="EC">
+						</figure>
+					</div>
+					<div class="flex-content">
+						<div class="flex-area-primary">
+							<div class="fullName">
+								{{carDetails.CarClass}}
+							</div>
+							<div class="exampleModel">
+								<div class="car-model">
+									{{carDetails.CarMakeModel}}
+								</div>
+							</div>
+							<div class="locations-info ">
+								{{#if carDetails.PickupInfo}}
+								<div class="pickup-location location">
+									<span class="location-label">
+									<strong>Pickup Location:</strong>
+										{{carDetails.PickupInfo.Location.City}},
+										{{carDetails.PickupInfo.Location.Province}}
+										{{carDetails.PickupInfo.Location.Country}}
+									</span>
+									<p><strong>Pickup Date:</strong>
+										{{carDetails.PickupInfo.DateTime}}
+									</p>
+									<span class="location-label"><strong>Dropoff Location:</strong>
+										{{carDetails.DropOffInfo.Location.City}},
+										{{carDetails.DropOffInfo.Location.Province}}
+										{{carDetails.DropOffInfo.Location.Country}}
+									</span>
+									<p><strong>Dropoff Date:</strong>
+										{{carDetails.DropOffInfo.DateTime}}
+									</p>
+								</div>
+								{{/if}}
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="flex-area-secondary">
+				<div class="price-summary">
+					<div class="full-price">
+						{{carDetails.Price.TotalRate.Value}}
+						<small>{{carDetails.Price.TotalRate.Currency}}</small>
+					</div>
+
+				</div>
+				<div class="book-container">
+					<a class="btn btn-action btn-primary" href="{{carDetails.DetailsUrl}}" target="_blank">
+						<span class="btn-label">Search Link</span>
+					</a>
+					<button {{action "detailsHide"}} class="btn">
+						<span class="btn-label">Hide Results</span>
+					</button>
+				</div>
+			</div>
+		</div>
+	</div>
+{{else}}
+	<button {{action "detailsShow"}}>
+		<span class="btn-label">Show Results</span>
+	</button>
+{{/if}}
