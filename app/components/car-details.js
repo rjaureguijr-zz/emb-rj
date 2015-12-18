@@ -7,7 +7,7 @@ export default Ember.Component.extend({
 			this.set('isDetailsLoaded', true);
 		},
 		detailsHide() {
-			this.set('isDetailsLoaded', false)
+			this.set('isDetailsLoaded', false);
 		}
 	}
 });

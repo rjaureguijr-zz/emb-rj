@@ -16,42 +16,63 @@
 						</figure>
 					</div>
 					<div class="flex-content">
-						<div class="car-model">
-							{{carDetails.CarMakeModel}}
+						<div class="flex-area-primary">
+							<div class="fullName">
+								{{carDetails.CarClass}}
+							</div>
+							<div class="exampleModel">
+								<div class="car-model">
+									{{carDetails.CarMakeModel}}
+								</div>
+							</div>
+							<div class="locations-info ">
+								{{#if carDetails.PickupInfo}}
+								<div class="pickup-location location">
+									<span class="location-label">
+									<strong>Pickup Location:</strong>
+										{{carDetails.PickupInfo.Location.City}},
+										{{carDetails.PickupInfo.Location.Province}}
+										{{carDetails.PickupInfo.Location.Country}}
+									</span>
+									<p><strong>Pickup Date:</strong>
+										{{carDetails.PickupInfo.DateTime}}
+									</p>
+									<span class="location-label"><strong>Dropoff Location:</strong>
+										{{carDetails.DropOffInfo.Location.City}},
+										{{carDetails.DropOffInfo.Location.Province}}
+										{{carDetails.DropOffInfo.Location.Country}}
+									</span>
+									<p><strong>Dropoff Date:</strong>
+										{{carDetails.DropOffInfo.DateTime}}
+									</p>
+								</div>
+								{{/if}}
+							</div>
 						</div>
-						<p>Class: {{carDetails.CarClass}}</p>
 					</div>
 				</div>
 			</div>
 			<div class="flex-area-secondary">
-				{{#if carDetails.PickupInfo}}
-					<p><strong>Pickup Location:</strong>
-						{{carDetails.PickupInfo.Location.City}},
-						{{carDetails.PickupInfo.Location.Province}}
-						{{carDetails.PickupInfo.Location.Country}}
-					</p>
-					<p><strong>Pickup Date:</strong>
-						{{carDetails.PickupInfo.DateTime}}
-					</p>
-					<p><strong>Dropoff Location:</strong>
-						{{carDetails.DropOffInfo.Location.City}},
-						{{carDetails.DropOffInfo.Location.Province}}
-						{{carDetails.DropOffInfo.Location.Country}}
-					</p>
-					<p><strong>Dropoff Date:</strong>
-						{{carDetails.DropOffInfo.DateTime}}
-					</p>
-					<a href="{{carDetails.DetailsUrl}}" target="_blank">Search Link</a>
-					<button {{action "detailsHide"}}>Hide Results</button>
-					<div class="price-summary">
-						<div class="full-price">
-							{{carDetails.Price.TotalRate.Value}} <small>{{carDetails.Price.TotalRate.Currency}}</small>
-						</div>
+				<div class="price-summary">
+					<div class="full-price">
+						{{carDetails.Price.TotalRate.Value}}
+						<small>{{carDetails.Price.TotalRate.Currency}}</small>
 					</div>
-				{{/if}}
+
+				</div>
+				<div class="book-container">
+					<a class="btn btn-action btn-primary" href="{{carDetails.DetailsUrl}}" target="_blank">
+						<span class="btn-label">Search Link</span>
+					</a>
+					<button {{action "detailsHide"}} class="btn">
+						<span class="btn-label">Hide Results</span>
+					</button>
+				</div>
 			</div>
 		</div>
 	</div>
 {{else}}
-	<button {{action "detailsShow"}}>Show Results</button>
+	<button {{action "detailsShow"}}>
+		<span class="btn-label">Show Results</span>
+	</button>
 {{/if}}
