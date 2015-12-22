@@ -8,6 +8,7 @@ let App;
 Ember.MODEL_FACTORY_INJECTIONS = true;
 
 App = Ember.Application.extend({
+	LOG_TRANSITIONS: true, //To log what will happen when page changes...rj
   modulePrefix: config.modulePrefix,
   podModulePrefix: config.podModulePrefix,
   Resolver
