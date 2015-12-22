@@ -1,0 +1,32 @@
+{{yield}}
+
+<div class="site-footer-background">
+	<div class="site-footer-wrap cols-nested">
+		<div class="links-list">
+			<ul class="expedia-links">
+				<li>
+					{{#if isCurrentPage }}
+						{{#link-to "index"}}Home{{/link-to}}
+					{{else}}
+						Home
+						<button {{action "currentPage"}}>Make link</button>
+					{{/if}}
+				</li>
+				<li>
+					{{#if isCurrentPage }}
+						{{#link-to "contact"}}Contact{{/link-to}}
+					{{else}}
+						Contact
+					{{/if}}
+				</li>
+				<li>
+					{{#if isCurrentPage }}
+						{{#link-to "about"}}About{{/link-to}}
+					{{else}}
+						About
+					{{/if}}
+				</li>
+			</ul>
+		</div>
+	</div>
+</div>
