@@ -1,0 +1,19 @@
+{{yield}}
+<header class="cols-row-header cf search-header no-group">
+	<h1 class="section-header-main">
+		{{#if searchResultUpdated}}
+			{{loc 'views_default_includes_cars_search_cars-title.search_result_updated' }}
+		{{else}}
+			{{#if titleRegion}}
+				<div class="none-mobile">
+					{{titleStrNonMobile}}
+					Car Search Lab non mobile
+				</div>
+				<div class="mobile-only">
+					{{titleStrMobile}}
+					Car Search Lab mobile
+				</div>
+			{{/if}}
+		{{/if}}
+	</h1>
+</header>
